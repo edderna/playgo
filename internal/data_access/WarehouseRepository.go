@@ -1,4 +1,4 @@
-package entities
+package data_access
 
 type Warehouse struct {
 	Id            string `json:"id" bson:"_id"`
@@ -11,4 +11,8 @@ type Warehouse struct {
 	City          string `json:"city"`
 	Province      string `json:"province"`
 	Country       string `json:"country"`
+}
+
+type WarehouseRepository interface {
+	FindByFFmCenterCode(ffmCenterCode string) (*Warehouse, error)
 }

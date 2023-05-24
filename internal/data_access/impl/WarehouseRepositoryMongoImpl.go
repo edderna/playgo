@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"context"
-	"cursoGo/internal/data_access/entities"
+	"cursoGo/internal/data_access"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"time"
@@ -20,8 +20,8 @@ func NewWarehouseRepositoryMongoImpl(m *mongo.Database) WarehouseRepositoryMongo
 	}
 }
 
-func (w WarehouseRepositoryMongoImpl) FindByFFmCenterCode(ffmCenterCode string) (*entities.Warehouse, error) {
-	var result entities.Warehouse
+func (w WarehouseRepositoryMongoImpl) FindByFFmCenterCode(ffmCenterCode string) (*data_access.Warehouse, error) {
+	var result data_access.Warehouse
 	var resultPointer = &result
 	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
 
