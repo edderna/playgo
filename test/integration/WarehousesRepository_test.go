@@ -1,10 +1,12 @@
-package internal
+package integration
 
 import (
+	"cursoGo/internal/data_access/entities"
 	"cursoGo/internal/data_access/repositories"
 	repositoriesImpl "cursoGo/internal/data_access/repositories/impl"
 	"cursoGo/test/test_utils/populators"
-	"fmt"
+	"github.com/google/go-cmp/cmp/cmpopts"
+	"gotest.tools/v3/assert"
 	"testing"
 )
 
@@ -20,6 +22,7 @@ func TestFindByFfmCenterCode_whenExistsFfmCenter_mustReturnFfmCenter(t *testing.
 	if result == nil {
 		t.Fatalf("%s", err.Error())
 	} else {
-		fmt.Println(result)
+		assert.DeepEqual(t, *result, entities.Warehouse{Code: "437", FfmCenterCode: "ZARAESPAR", BrandId: "1", Name: "Zara – Parla", City: "Parla",
+			AddressLine1: "Calle Nantes", ZipCode: "28983", Province: "Madrid", Country: "España"}, cmpopts.IgnoreFields(*result, "Id"))
 	}
 }

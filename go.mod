@@ -4,8 +4,10 @@ go 1.20
 
 require (
 	github.com/docker/go-connections v0.4.0
+	github.com/google/go-cmp v0.5.9
 	github.com/testcontainers/testcontainers-go v0.20.1
 	go.mongodb.org/mongo-driver v1.11.6
+	gotest.tools/v3 v3.0.3
 )
 
 require (

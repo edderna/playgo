@@ -1,4 +1,4 @@
-package internal
+package integration
 
 import (
 	"cursoGo/test/test_utils/containers"
@@ -8,11 +8,11 @@ import (
 	"testing"
 )
 
-type Context struct {
+type IntegrationContext struct {
 	mongoClient *mongo.Client
 }
 
-var context Context
+var context IntegrationContext
 
 func TestMain(m *testing.M) {
 	log.Println("before all package tests")
@@ -23,8 +23,8 @@ func TestMain(m *testing.M) {
 	os.Exit(exitCode)
 }
 
-func initGlobalContext() Context {
-	return Context{
+func initGlobalContext() IntegrationContext {
+	return IntegrationContext{
 		mongoClient: initDb(),
 	}
 }

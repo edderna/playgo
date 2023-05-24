@@ -1,6 +1,7 @@
 package entities
 
 type Warehouse struct {
+	Id            string `json:"id" bson:"_id"`
 	Code          string `json:"code"`
 	FfmCenterCode string `json:"ffmCenterCode"`
 	BrandId       string `json:"brandId"`
