@@ -1,4 +1,4 @@
-package users
+package warehouses
 
 import (
 	"context"
