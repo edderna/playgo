@@ -1,4 +1,8 @@
-package data_access
+package users
+
+import (
+	"go.mongodb.org/mongo-driver/mongo"
+)
 
 type Warehouse struct {
 	Id            string `json:"id" bson:"_id"`
@@ -15,4 +19,12 @@ type Warehouse struct {
 
 type WarehouseRepository interface {
 	FindByFFmCenterCode(ffmCenterCode string) (*Warehouse, error)
+}
+
+const collectionName = "warehouses"
+
+func NewWarehouseRepository(m *mongo.Database) WarehouseRepository {
+	return WarehouseRepositoryMongoImpl{
+		Collection: m.Collection(collectionName),
+	}
 }
